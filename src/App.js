@@ -21,54 +21,59 @@ import './App.css';
 // Fallback rides data
 const fallbackRides = [
   // Adventureland
-  { name: "Indiana Jones Adventure", land: "Adventureland", type: "Thrill Ride", waitTime: 0 },
-  { name: "Jungle Cruise", land: "Adventureland", type: "Boat Ride", waitTime: 0 },
-  { name: "Tarzan's Treehouse", land: "Adventureland", type: "Walkthrough", waitTime: 0 },
-  { name: "Walt Disney's Enchanted Tiki Room", land: "Adventureland", type: "Show", waitTime: 0 },
+  { name: "Indiana Jones Adventure", land: "Adventureland", type: "Thrill Rides", waitTime: 0 },
+  { name: "Jungle Cruise", land: "Adventureland", type: "Family Rides", waitTime: 0 },
+  { name: "Tarzan's Treehouse", land: "Adventureland", type: "Shows & Entertainment", waitTime: 0 },
+  { name: "Walt Disney's Enchanted Tiki Room", land: "Adventureland", type: "Shows & Entertainment", waitTime: 0 },
 
   // Critter Country
-  { name: "Tiana's Bayou Adventure", land: "Critter Country", type: "Water Ride", waitTime: 0 },
-  { name: "The Many Adventures of Winnie the Pooh", land: "Critter Country", type: "Dark Ride", waitTime: 0 },
+  { name: "Tiana's Bayou Adventure", land: "Critter Country", type: "Dark Rides", waitTime: 0 },
+  { name: "The Many Adventures of Winnie the Pooh", land: "Critter Country", type: "Dark Rides", waitTime: 0 },
   
   // Fantasyland
-  { name: "Alice in Wonderland", land: "Fantasyland", type: "Dark Ride", waitTime: 0 },
-  { name: "Casey Jr. Circus Train", land: "Fantasyland", type: "Train Ride", waitTime: 0 },
-  { name: "Dumbo the Flying Elephant", land: "Fantasyland", type: "Aerial Carousel", waitTime: 0 },
-  { name: "it's a small world", land: "Fantasyland", type: "Boat Ride", waitTime: 0 },
-  { name: "King Arthur Carrousel", land: "Fantasyland", type: "Carousel", waitTime: 0 },
-  { name: "Mad Tea Party", land: "Fantasyland", type: "Spinning Ride", waitTime: 0 },
-  { name: "Matterhorn Bobsleds", land: "Fantasyland", type: "Thrill Ride", waitTime: 0 },
-  { name: "Mr. Toad's Wild Ride", land: "Fantasyland", type: "Dark Ride", waitTime: 0 },
-  { name: "Peter Pan's Flight", land: "Fantasyland", type: "Dark Ride", waitTime: 0 },
-  { name: "Pinocchio's Daring Journey", land: "Fantasyland", type: "Dark Ride", waitTime: 0 },
-  { name: "Snow White's Enchanted Wish", land: "Fantasyland", type: "Dark Ride", waitTime: 0 },
-  { name: "Storybook Land Canal Boats", land: "Fantasyland", type: "Boat Ride", waitTime: 0 },
+  { name: "Alice in Wonderland", land: "Fantasyland", type: "Dark Rides", waitTime: 0 },
+  { name: "Casey Jr. Circus Train", land: "Fantasyland", type: "Family Rides", waitTime: 0 },
+  { name: "Dumbo the Flying Elephant", land: "Fantasyland", type: "Family Rides", waitTime: 0 },
+  { name: "it's a small world", land: "Fantasyland", type: "Dark Rides", waitTime: 0 },
+  { name: "King Arthur Carrousel", land: "Fantasyland", type: "Family Rides", waitTime: 0 },
+  { name: "Mad Tea Party", land: "Fantasyland", type: "Family Rides", waitTime: 0 },
+  { name: "Matterhorn Bobsleds", land: "Fantasyland", type: "Thrill Rides", waitTime: 0 },
+  { name: "Mr. Toad's Wild Ride", land: "Fantasyland", type: "Dark Rides", waitTime: 0 },
+  { name: "Peter Pan's Flight", land: "Fantasyland", type: "Dark Rides", waitTime: 0 },
+  { name: "Pinocchio's Daring Journey", land: "Fantasyland", type: "Dark Rides", waitTime: 0 },
+  { name: "Snow White's Enchanted Wish", land: "Fantasyland", type: "Dark Rides", waitTime: 0 },
+  { name: "Storybook Land Canal Boats", land: "Fantasyland", type: "Family Rides", waitTime: 0 },
 
   // Frontierland
-  { name: "Big Thunder Mountain Railroad", land: "Frontierland", type: "Thrill Ride", waitTime: 0 },
-  { name: "Sailing Ship Columbia", land: "Frontierland", type: "Boat Ride", waitTime: 0 },
-  { name: "Mark Twain Riverboat", land: "Frontierland", type: "Boat Ride", waitTime: 0 },
+  { name: "Big Thunder Mountain Railroad", land: "Frontierland", type: "Thrill Rides", waitTime: 0 },
+  { name: "Sailing Ship Columbia", land: "Frontierland", type: "Transportation", waitTime: 0 },
+  { name: "Mark Twain Riverboat", land: "Frontierland", type: "Transportation", waitTime: 0 },
 
   // Galaxy's Edge
-  { name: "Millennium Falcon: Smugglers Run", land: "Galaxy's Edge", type: "Interactive", waitTime: 0 },
-  { name: "Star Wars: Rise of the Resistance", land: "Galaxy's Edge", type: "Dark Ride", waitTime: 0 },
+  { name: "Millennium Falcon: Smugglers Run", land: "Galaxy's Edge", type: "Thrill Rides", waitTime: 0 },
+  { name: "Star Wars: Rise of the Resistance", land: "Galaxy's Edge", type: "Dark Rides", waitTime: 0 },
 
   // Main Street U.S.A.
-  { name: "Disneyland Railroad", land: "Main Street U.S.A.", type: "Train Ride", waitTime: 0 },
-  { name: "Main Street Vehicles", land: "Main Street U.S.A.", type: "Transport", waitTime: 0 },
+  { name: "Disneyland Railroad", land: "Main Street U.S.A.", type: "Transportation", waitTime: 0 },
+  { name: "Main Street Vehicles", land: "Main Street U.S.A.", type: "Transportation", waitTime: 0 },
+
+  // Mickey's Toontown
+  { name: "Mickey & Minnie's Runaway Railway", land: "Mickey's Toontown", type: "Dark Rides", waitTime: 0 },
+  { name: "Chip 'n' Dale's GADGETcoaster", land: "Mickey's Toontown", type: "Family Rides", waitTime: 0 },
+  { name: "Roger Rabbit's Car Toon Spin", land: "Mickey's Toontown", type: "Dark Rides", waitTime: 0 },
 
   // New Orleans Square
-  { name: "Haunted Mansion", land: "New Orleans Square", type: "Dark Ride", waitTime: 0 },
-  { name: "Pirates of the Caribbean", land: "New Orleans Square", type: "Dark Ride", waitTime: 0 },
+  { name: "Haunted Mansion", land: "New Orleans Square", type: "Dark Rides", waitTime: 0 },
+  { name: "Pirates of the Caribbean", land: "New Orleans Square", type: "Dark Rides", waitTime: 0 },
 
   // Tomorrowland
-  { name: "Astro Orbitor", land: "Tomorrowland", type: "Aerial Carousel", waitTime: 0 },
-  { name: "Autopia", land: "Tomorrowland", type: "Driving Ride", waitTime: 0 },
-  { name: "Buzz Lightyear Astro Blasters", land: "Tomorrowland", type: "Interactive", waitTime: 0 },
-  { name: "Finding Nemo Submarine Voyage", land: "Tomorrowland", type: "Submarine Ride", waitTime: 0 },
-  { name: "Monorail", land: "Tomorrowland", type: "Transport", waitTime: 0 },
-  { name: "Space Mountain", land: "Tomorrowland", type: "Thrill Ride", waitTime: 0 },
-  { name: "Star Tours – The Adventures Continue", land: "Tomorrowland", type: "Simulator", waitTime: 0 }
+  { name: "Astro Orbitor", land: "Tomorrowland", type: "Family Rides", waitTime: 0 },
+  { name: "Autopia", land: "Tomorrowland", type: "Family Rides", waitTime: 0 },
+  { name: "Buzz Lightyear Astro Blasters", land: "Tomorrowland", type: "Dark Rides", waitTime: 0 },
+  { name: "Finding Nemo Submarine Voyage", land: "Tomorrowland", type: "Dark Rides", waitTime: 0 },
+  { name: "Monorail", land: "Tomorrowland", type: "Transportation", waitTime: 0 },
+  { name: "Space Mountain", land: "Tomorrowland", type: "Thrill Rides", waitTime: 0 },
+  { name: "Star Tours – The Adventures Continue", land: "Tomorrowland", type: "Thrill Rides", waitTime: 0 }
 ];
 
 function App() {
