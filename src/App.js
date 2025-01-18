@@ -254,7 +254,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="/img/logo.jpg" alt="Disneyland Ride Picker Logo" className="app-logo" />
+        <img src="/img/ridepickerlogo.webp" alt="Disneyland Ride Picker Logo" className="app-logo" />
         <h1>Disneyland Ride Picker</h1>
 
         <div className="filters">

@@ -41,12 +41,11 @@ body {
 }
 
 .app-logo {
-  width: 200px;
+  width: 300px;
   height: auto;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 80px;
+  max-width: 90%;
+  object-fit: contain;
+  margin: 20px 0;
 }
 
 h1 {
