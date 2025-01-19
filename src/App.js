@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
+import { styled } from '@mui/material/styles';
 import { 
-  Button, 
+  Button,
   Typography, 
   Card, 
   CardContent,
@@ -19,18 +20,28 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
-// Your existing fallbackRides array
-const fallbackRides = [
-  // Adventureland
-  { name: "Indiana Jones Adventure", land: "Adventureland", type: "Thrill Rides" },
-  { name: "Jungle Cruise", land: "Adventureland", type: "Family Rides" },
-  { name: "Tarzan's Treehouse", land: "Adventureland", type: "Shows & Entertainment" },
-  { name: "Walt Disney's Enchanted Tiki Room", land: "Adventureland", type: "Shows & Entertainment" },
-  // Critter Country
-  { name: "Tiana's Bayou Adventure", land: "Critter Country", type: "Dark Rides" },
-  { name: "The Many Adventures of Winnie the Pooh", land: "Critter Country", type: "Dark Rides" }
-  // Add the rest of your rides here...
-];
+// Create a styled button component that overrides MUI's defaults
+const DisneyButton = styled(Button)({
+  background: 'linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%)',
+  color: 'white',
+  fontWeight: 600,
+  textTransform: 'none',
+  padding: '12px 32px',
+  borderRadius: '6px',
+  transition: 'all 0.3s ease',
+  boxShadow: '0 0 10px rgba(44, 146, 210, 0.3)',
+  border: 'none',
+  letterSpacing: '0.5px',
+  '&:hover': {
+    transform: 'translateY(-2px)',
+    boxShadow: '0 4px 15px rgba(44, 146, 210, 0.4)',
+    background: 'linear-gradient(135deg, #7E56E2 0%, #3CA2E2 100%)',
+  },
+  '&:disabled': {
+    background: 'linear-gradient(135deg, #9E86E2 0%, #7CC2E2 100%)',
+    opacity: 0.7,
+  }
+});
 
 function App() {
   const [rides, setRides] = useState([]);
@@ -70,14 +81,6 @@ function App() {
         setIsLoading(false);
       } catch (error) {
         console.error('Error initializing rides:', error);
-        // Use fallback data if fetch fails
-        console.log('Using fallback ride data');
-        setRides(fallbackRides);
-        setWaitTimes(fallbackRides);
-        const lands = [...new Set(fallbackRides.map(ride => ride.land))];
-        const types = [...new Set(fallbackRides.map(ride => ride.type))];
-        setUniqueLands(lands);
-        setUniqueTypes(types);
         setIsLoading(false);
       }
     };
@@ -94,7 +97,6 @@ function App() {
       setIsLoading(false);
     } catch (error) {
       console.error('Error fetching wait times:', error);
-      setWaitTimes(fallbackRides);
       setIsLoading(false);
     }
   };
@@ -172,14 +174,13 @@ function App() {
           </Box>
 
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 4 }}>
-            <Button
-              variant="contained"
+            <DisneyButton
               onClick={pickRandomRide}
               disabled={isLoading || filteredRides.length === 0}
               startIcon={<ShuffleIcon />}
             >
               Pick a Random Ride
-            </Button>
+            </DisneyButton>
 
             <Button
               variant="contained"
