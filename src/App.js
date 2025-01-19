@@ -40,6 +40,17 @@ const getLandColor = (land) => {
   return landColors[land] || '#C41E3A'; // Default to Main Street color if land not found
 };
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 const DisneyButton = styled(Button)({
   background: 'linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%)',
   color: 'white',
@@ -81,22 +92,11 @@ const FooterContainer = styled(Paper)(() => ({
   borderTop: '1px solid rgba(0, 0, 0, 0.1)',
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
 const App = () => {
   const [rides, setRides] = useState([]);
   const [selectedRide, setSelectedRide] = useState(null);
-  const [selectedLand, setSelectedLand] = useState('');
-  const [selectedTypes, setSelectedTypes] = useState([]); // Changed to array
+  const [selectedLands, setSelectedLands] = useState([]); // Changed to array
+  const [selectedTypes, setSelectedTypes] = useState([]);
   const [waitTimes, setWaitTimes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
@@ -148,7 +148,7 @@ const App = () => {
   };
 
   const filteredRides = waitTimes.filter(ride => {
-    const matchesLand = !selectedLand || ride.land === selectedLand;
+    const matchesLand = selectedLands.length === 0 || selectedLands.includes(ride.land);
     const matchesType = selectedTypes.length === 0 || selectedTypes.includes(ride.type);
     return matchesLand && matchesType;
   });
@@ -162,8 +162,11 @@ const App = () => {
     setSelectedRide(filteredRides[randomIndex]);
   };
 
-  const handleLandChange = (e) => {
-    setSelectedLand(e.target.value);
+  const handleLandChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSelectedLands(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleTypeChange = (event) => {
@@ -196,13 +199,18 @@ const App = () => {
             <FormControl sx={{ minWidth: 200 }}>
               <InputLabel>Filter by Land</InputLabel>
               <Select
-                value={selectedLand}
+                multiple
+                value={selectedLands}
                 onChange={handleLandChange}
-                label="Filter by Land"
+                input={<OutlinedInput label="Filter by Land" />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
               >
-                <MenuItem value="">All Lands</MenuItem>
                 {uniqueLands.map((land) => (
-                  <MenuItem key={land} value={land}>{land}</MenuItem>
+                  <MenuItem key={land} value={land}>
+                    <Checkbox checked={selectedLands.indexOf(land) > -1} />
+                    <ListItemText primary={land} />
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
