@@ -59,7 +59,7 @@ eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dynamic */ \"./node_modules/next/dynamic.js\");\n/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_1__);\n\n\n// Dynamically import App with no SSR\nconst App = next_dynamic__WEBPACK_IMPORTED_MODULE_1___default()(()=>__webpack_require__.e(/*! import() */ \"src_App_js\").then(__webpack_require__.bind(__webpack_require__, /*! ../src/App */ \"./src/App.js\")), {\n    loadableGenerated: {\n        modules: [\n            \"pages/index.js -> \" + \"../src/App\"\n        ]\n    },\n    ssr: false\n});\nconst Home = ()=>{\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(App, {}, void 0, false, {\n        fileName: \"/Users/jnguyen/Documents/AI/disneyland-ride-picker/disneyridepicker/pages/index.js\",\n        lineNumber: 7,\n        columnNumber: 10\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9pbmRleC5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBbUM7QUFFbkMscUNBQXFDO0FBQ3JDLE1BQU1DLE1BQU1ELG1EQUFPQSxDQUFDLElBQU0seUlBQU87Ozs7OztJQUFpQkUsS0FBSzs7QUFFdkQsTUFBTUMsT0FBTztJQUNYLHFCQUFPLDhEQUFDRjs7Ozs7QUFDVjtBQUVBLGlFQUFlRSxJQUFJQSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vZGlzbmV5bGFuZC1yaWRlLXBpY2tlci8uL3BhZ2VzL2luZGV4LmpzP2JlZTciXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGR5bmFtaWMgZnJvbSAnbmV4dC9keW5hbWljJztcblxuLy8gRHluYW1pY2FsbHkgaW1wb3J0IEFwcCB3aXRoIG5vIFNTUlxuY29uc3QgQXBwID0gZHluYW1pYygoKSA9PiBpbXBvcnQoJy4uL3NyYy9BcHAnKSwgeyBzc3I6IGZhbHNlIH0pO1xuXG5jb25zdCBIb21lID0gKCkgPT4ge1xuICByZXR1cm4gPEFwcCAvPjtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IEhvbWU7Il0sIm5hbWVzIjpbImR5bmFtaWMiLCJBcHAiLCJzc3IiLCJIb21lIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./pages/index.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dynamic */ \"./node_modules/next/dynamic.js\");\n/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_1__);\n\n\n// Dynamically import App with no SSR\nconst App = next_dynamic__WEBPACK_IMPORTED_MODULE_1___default()(()=>Promise.all(/*! import() */[__webpack_require__.e(\"vendor-chunks/@mui\"), __webpack_require__.e(\"src_App_js\")]).then(__webpack_require__.bind(__webpack_require__, /*! ../src/App */ \"./src/App.js\")), {\n    loadableGenerated: {\n        modules: [\n            \"pages/index.js -> \" + \"../src/App\"\n        ]\n    },\n    ssr: false\n});\nconst Home = ()=>{\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(App, {}, void 0, false, {\n        fileName: \"/Users/jnguyen/Documents/AI/disneyland-ride-picker/disneyridepicker/pages/index.js\",\n        lineNumber: 7,\n        columnNumber: 10\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9pbmRleC5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBbUM7QUFFbkMscUNBQXFDO0FBQ3JDLE1BQU1DLE1BQU1ELG1EQUFPQSxDQUFDLElBQU0sb01BQU87Ozs7OztJQUFpQkUsS0FBSzs7QUFFdkQsTUFBTUMsT0FBTztJQUNYLHFCQUFPLDhEQUFDRjs7Ozs7QUFDVjtBQUVBLGlFQUFlRSxJQUFJQSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vZGlzbmV5bGFuZC1yaWRlLXBpY2tlci8uL3BhZ2VzL2luZGV4LmpzP2JlZTciXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGR5bmFtaWMgZnJvbSAnbmV4dC9keW5hbWljJztcblxuLy8gRHluYW1pY2FsbHkgaW1wb3J0IEFwcCB3aXRoIG5vIFNTUlxuY29uc3QgQXBwID0gZHluYW1pYygoKSA9PiBpbXBvcnQoJy4uL3NyYy9BcHAnKSwgeyBzc3I6IGZhbHNlIH0pO1xuXG5jb25zdCBIb21lID0gKCkgPT4ge1xuICByZXR1cm4gPEFwcCAvPjtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IEhvbWU7Il0sIm5hbWVzIjpbImR5bmFtaWMiLCJBcHAiLCJzc3IiLCJIb21lIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./pages/index.js\n");
 
 /***/ }),
 
@@ -70,6 +70,36 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ createEmotionCache)\n/* harmony export */ });\n/* harmony import */ var _emotion_cache__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @emotion/cache */ \"@emotion/cache\");\nvar __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_emotion_cache__WEBPACK_IMPORTED_MODULE_0__]);\n_emotion_cache__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];\n\nfunction createEmotionCache() {\n    return (0,_emotion_cache__WEBPACK_IMPORTED_MODULE_0__[\"default\"])({\n        key: \"css\",\n        prepend: true\n    });\n}\n\n__webpack_async_result__();\n} catch(e) { __webpack_async_result__(e); } });//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvbGliL2NyZWF0ZUVtb3Rpb25DYWNoZS5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7OztBQUF5QztBQUUxQixTQUFTQztJQUN0QixPQUFPRCwwREFBV0EsQ0FBQztRQUFFRSxLQUFLO1FBQU9DLFNBQVM7SUFBSztBQUNqRCIsInNvdXJjZXMiOlsid2VicGFjazovL2Rpc25leWxhbmQtcmlkZS1waWNrZXIvLi9zcmMvbGliL2NyZWF0ZUVtb3Rpb25DYWNoZS5qcz8wN2IwIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBjcmVhdGVDYWNoZSBmcm9tICdAZW1vdGlvbi9jYWNoZSc7XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIGNyZWF0ZUVtb3Rpb25DYWNoZSgpIHtcbiAgcmV0dXJuIGNyZWF0ZUNhY2hlKHsga2V5OiAnY3NzJywgcHJlcGVuZDogdHJ1ZSB9KTtcbn0iXSwibmFtZXMiOlsiY3JlYXRlQ2FjaGUiLCJjcmVhdGVFbW90aW9uQ2FjaGUiLCJrZXkiLCJwcmVwZW5kIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./src/lib/createEmotionCache.js\n");
+
+/***/ }),
+
+/***/ "@mui/icons-material/AccessTime":
+/*!*************************************************!*\
+  !*** external "@mui/icons-material/AccessTime" ***!
+  \*************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/icons-material/AccessTime");
+
+/***/ }),
+
+/***/ "@mui/icons-material/Refresh":
+/*!**********************************************!*\
+  !*** external "@mui/icons-material/Refresh" ***!
+  \**********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/icons-material/Refresh");
+
+/***/ }),
+
+/***/ "@mui/icons-material/Shuffle":
+/*!**********************************************!*\
+  !*** external "@mui/icons-material/Shuffle" ***!
+  \**********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/icons-material/Shuffle");
 
 /***/ }),
 
@@ -110,6 +140,16 @@ module.exports = require("@mui/system/DefaultPropsProvider");
 /***/ ((module) => {
 
 module.exports = require("@mui/system/InitColorSchemeScript");
+
+/***/ }),
+
+/***/ "@mui/system/RtlProvider":
+/*!******************************************!*\
+  !*** external "@mui/system/RtlProvider" ***!
+  \******************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/system/RtlProvider");
 
 /***/ }),
 
@@ -163,6 +203,66 @@ module.exports = require("@mui/system/useThemeProps");
 
 /***/ }),
 
+/***/ "@mui/utils":
+/*!*****************************!*\
+  !*** external "@mui/utils" ***!
+  \*****************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils");
+
+/***/ }),
+
+/***/ "@mui/utils/HTMLElementType":
+/*!*********************************************!*\
+  !*** external "@mui/utils/HTMLElementType" ***!
+  \*********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/HTMLElementType");
+
+/***/ }),
+
+/***/ "@mui/utils/capitalize":
+/*!****************************************!*\
+  !*** external "@mui/utils/capitalize" ***!
+  \****************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/capitalize");
+
+/***/ }),
+
+/***/ "@mui/utils/chainPropTypes":
+/*!********************************************!*\
+  !*** external "@mui/utils/chainPropTypes" ***!
+  \********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/chainPropTypes");
+
+/***/ }),
+
+/***/ "@mui/utils/composeClasses":
+/*!********************************************!*\
+  !*** external "@mui/utils/composeClasses" ***!
+  \********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/composeClasses");
+
+/***/ }),
+
+/***/ "@mui/utils/debounce":
+/*!**************************************!*\
+  !*** external "@mui/utils/debounce" ***!
+  \**************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/debounce");
+
+/***/ }),
+
 /***/ "@mui/utils/deepmerge":
 /*!***************************************!*\
   !*** external "@mui/utils/deepmerge" ***!
@@ -170,6 +270,36 @@ module.exports = require("@mui/system/useThemeProps");
 /***/ ((module) => {
 
 module.exports = require("@mui/utils/deepmerge");
+
+/***/ }),
+
+/***/ "@mui/utils/elementAcceptingRef":
+/*!*************************************************!*\
+  !*** external "@mui/utils/elementAcceptingRef" ***!
+  \*************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/elementAcceptingRef");
+
+/***/ }),
+
+/***/ "@mui/utils/elementTypeAcceptingRef":
+/*!*****************************************************!*\
+  !*** external "@mui/utils/elementTypeAcceptingRef" ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/elementTypeAcceptingRef");
+
+/***/ }),
+
+/***/ "@mui/utils/extractEventHandlers":
+/*!**************************************************!*\
+  !*** external "@mui/utils/extractEventHandlers" ***!
+  \**************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/extractEventHandlers");
 
 /***/ }),
 
@@ -190,6 +320,206 @@ module.exports = require("@mui/utils/formatMuiErrorMessage");
 /***/ ((module) => {
 
 module.exports = require("@mui/utils/generateUtilityClass");
+
+/***/ }),
+
+/***/ "@mui/utils/generateUtilityClasses":
+/*!****************************************************!*\
+  !*** external "@mui/utils/generateUtilityClasses" ***!
+  \****************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/generateUtilityClasses");
+
+/***/ }),
+
+/***/ "@mui/utils/getReactElementRef":
+/*!************************************************!*\
+  !*** external "@mui/utils/getReactElementRef" ***!
+  \************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/getReactElementRef");
+
+/***/ }),
+
+/***/ "@mui/utils/getScrollbarSize":
+/*!**********************************************!*\
+  !*** external "@mui/utils/getScrollbarSize" ***!
+  \**********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/getScrollbarSize");
+
+/***/ }),
+
+/***/ "@mui/utils/integerPropType":
+/*!*********************************************!*\
+  !*** external "@mui/utils/integerPropType" ***!
+  \*********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/integerPropType");
+
+/***/ }),
+
+/***/ "@mui/utils/isHostComponent":
+/*!*********************************************!*\
+  !*** external "@mui/utils/isHostComponent" ***!
+  \*********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/isHostComponent");
+
+/***/ }),
+
+/***/ "@mui/utils/isMuiElement":
+/*!******************************************!*\
+  !*** external "@mui/utils/isMuiElement" ***!
+  \******************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/isMuiElement");
+
+/***/ }),
+
+/***/ "@mui/utils/ownerDocument":
+/*!*******************************************!*\
+  !*** external "@mui/utils/ownerDocument" ***!
+  \*******************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/ownerDocument");
+
+/***/ }),
+
+/***/ "@mui/utils/ownerWindow":
+/*!*****************************************!*\
+  !*** external "@mui/utils/ownerWindow" ***!
+  \*****************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/ownerWindow");
+
+/***/ }),
+
+/***/ "@mui/utils/refType":
+/*!*************************************!*\
+  !*** external "@mui/utils/refType" ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/refType");
+
+/***/ }),
+
+/***/ "@mui/utils/requirePropFactory":
+/*!************************************************!*\
+  !*** external "@mui/utils/requirePropFactory" ***!
+  \************************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/requirePropFactory");
+
+/***/ }),
+
+/***/ "@mui/utils/resolveProps":
+/*!******************************************!*\
+  !*** external "@mui/utils/resolveProps" ***!
+  \******************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/resolveProps");
+
+/***/ }),
+
+/***/ "@mui/utils/useControlled":
+/*!*******************************************!*\
+  !*** external "@mui/utils/useControlled" ***!
+  \*******************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useControlled");
+
+/***/ }),
+
+/***/ "@mui/utils/useEnhancedEffect":
+/*!***********************************************!*\
+  !*** external "@mui/utils/useEnhancedEffect" ***!
+  \***********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useEnhancedEffect");
+
+/***/ }),
+
+/***/ "@mui/utils/useEventCallback":
+/*!**********************************************!*\
+  !*** external "@mui/utils/useEventCallback" ***!
+  \**********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useEventCallback");
+
+/***/ }),
+
+/***/ "@mui/utils/useForkRef":
+/*!****************************************!*\
+  !*** external "@mui/utils/useForkRef" ***!
+  \****************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useForkRef");
+
+/***/ }),
+
+/***/ "@mui/utils/useId":
+/*!***********************************!*\
+  !*** external "@mui/utils/useId" ***!
+  \***********************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useId");
+
+/***/ }),
+
+/***/ "@mui/utils/useIsFocusVisible":
+/*!***********************************************!*\
+  !*** external "@mui/utils/useIsFocusVisible" ***!
+  \***********************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useIsFocusVisible");
+
+/***/ }),
+
+/***/ "@mui/utils/useSlotProps":
+/*!******************************************!*\
+  !*** external "@mui/utils/useSlotProps" ***!
+  \******************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useSlotProps");
+
+/***/ }),
+
+/***/ "@mui/utils/useTimeout":
+/*!****************************************!*\
+  !*** external "@mui/utils/useTimeout" ***!
+  \****************************************/
+/***/ ((module) => {
+
+module.exports = require("@mui/utils/useTimeout");
+
+/***/ }),
+
+/***/ "clsx":
+/*!***********************!*\
+  !*** external "clsx" ***!
+  \***********************/
+/***/ ((module) => {
+
+module.exports = require("clsx");
 
 /***/ }),
 
@@ -230,6 +560,36 @@ module.exports = require("prop-types");
 /***/ ((module) => {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-dom":
+/*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+/***/ ((module) => {
+
+module.exports = require("react-dom");
+
+/***/ }),
+
+/***/ "react-is":
+/*!***************************!*\
+  !*** external "react-is" ***!
+  \***************************/
+/***/ ((module) => {
+
+module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "react-transition-group":
+/*!*****************************************!*\
+  !*** external "react-transition-group" ***!
+  \*****************************************/
+/***/ ((module) => {
+
+module.exports = require("react-transition-group");
 
 /***/ }),
 
@@ -290,6 +650,16 @@ module.exports = import("@emotion/react");;
 /***/ ((module) => {
 
 module.exports = import("@emotion/server/create-instance");;
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = import("axios");;
 
 /***/ })
 
