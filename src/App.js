@@ -43,7 +43,7 @@ const DisneyButton = styled(Button)({
   }
 });
 
-function App() {
+const App = () => {
   const [rides, setRides] = useState([]);
   const [selectedRide, setSelectedRide] = useState(null);
   const [selectedLand, setSelectedLand] = useState('');
@@ -70,11 +70,8 @@ function App() {
         setRides(response.data);
         setWaitTimes(response.data);
         
-        // Update unique lands and types
         const lands = [...new Set(response.data.map(ride => ride.land))];
         const types = [...new Set(response.data.map(ride => ride.type))];
-        console.log('Unique lands:', lands);
-        console.log('Unique types:', types);
         setUniqueLands(lands);
         setUniqueTypes(types);
         
@@ -104,7 +101,8 @@ function App() {
   const filteredRides = waitTimes.filter(ride => {
     const matchesLand = !selectedLand || ride.land === selectedLand;
     const matchesType = !selectedType || ride.type === selectedType;
-    return matchesLand && matchesType;
+    const isOperating = ride.waitTime !== -1; // Don't include closed rides
+    return matchesLand && matchesType && isOperating;
   });
 
   const pickRandomRide = () => {
@@ -273,6 +271,6 @@ function App() {
       </Container>
     </>
   );
-}
+};
 
 export default App;
