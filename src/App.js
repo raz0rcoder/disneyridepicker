@@ -15,7 +15,10 @@ import {
   CircularProgress,
   Container,
   Box,
-  Paper
+  Paper,
+  Checkbox,
+  ListItemText,
+  OutlinedInput
 } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -69,7 +72,7 @@ const StyledCard = styled(Card)(({ landColor }) => ({
   }
 }));
 
-const FooterContainer = styled(Paper)(({ theme }) => ({
+const FooterContainer = styled(Paper)(() => ({
   padding: '2rem',
   marginTop: '2rem',
   textAlign: 'center',
@@ -78,11 +81,22 @@ const FooterContainer = styled(Paper)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, 0.1)',
 }));
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 const App = () => {
   const [rides, setRides] = useState([]);
   const [selectedRide, setSelectedRide] = useState(null);
   const [selectedLand, setSelectedLand] = useState('');
-  const [selectedType, setSelectedType] = useState('');
+  const [selectedTypes, setSelectedTypes] = useState([]); // Changed to array
   const [waitTimes, setWaitTimes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
@@ -135,7 +149,7 @@ const App = () => {
 
   const filteredRides = waitTimes.filter(ride => {
     const matchesLand = !selectedLand || ride.land === selectedLand;
-    const matchesType = !selectedType || ride.type === selectedType;
+    const matchesType = selectedTypes.length === 0 || selectedTypes.includes(ride.type);
     return matchesLand && matchesType;
   });
 
@@ -152,8 +166,11 @@ const App = () => {
     setSelectedLand(e.target.value);
   };
 
-  const handleTypeChange = (e) => {
-    setSelectedType(e.target.value);
+  const handleTypeChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSelectedTypes(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleRefresh = () => {
@@ -193,13 +210,18 @@ const App = () => {
             <FormControl sx={{ minWidth: 200 }}>
               <InputLabel>Filter by Type</InputLabel>
               <Select
-                value={selectedType}
+                multiple
+                value={selectedTypes}
                 onChange={handleTypeChange}
-                label="Filter by Type"
+                input={<OutlinedInput label="Filter by Type" />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
               >
-                <MenuItem value="">All Types</MenuItem>
                 {uniqueTypes.map((type) => (
-                  <MenuItem key={type} value={type}>{type}</MenuItem>
+                  <MenuItem key={type} value={type}>
+                    <Checkbox checked={selectedTypes.indexOf(type) > -1} />
+                    <ListItemText primary={type} />
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -281,6 +303,9 @@ const App = () => {
                          `${selectedRide.waitTime} min wait`}
                       </Typography>
                     </Box>
+                    <Typography variant="body2" sx={{ mt: 1, color: 'text.secondary' }}>
+                      Type: {selectedRide.type}
+                    </Typography>
                   </CardContent>
                 </StyledCard>
               )}
@@ -313,6 +338,9 @@ const App = () => {
                              `${ride.waitTime} min wait`}
                           </Typography>
                         </Box>
+                        <Typography variant="body2" sx={{ mt: 1, color: 'text.secondary' }}>
+                          Type: {ride.type}
+                        </Typography>
                       </CardContent>
                     </StyledCard>
                   </Grid>
