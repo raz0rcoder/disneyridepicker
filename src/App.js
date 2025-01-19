@@ -21,6 +21,22 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
+const getLandColor = (land) => {
+  // Color scheme for each land
+  const landColors = {
+    'Main Street U.S.A.': '#C41E3A',    // Victorian red
+    'Adventureland': '#2F4F2F',         // Deep jungle green
+    'Frontierland': '#8B4513',          // Saddle brown
+    'Fantasyland': '#6A0DAD',           // Royal purple
+    'Tomorrowland': '#4169E1',          // Royal blue
+    'Critter Country': '#8B7355',       // Warm brown
+    'Star Wars: Galaxy\'s Edge': '#2F4F4F', // Dark slate gray
+    'New Orleans Square': '#800080',     // Deep purple
+  };
+
+  return landColors[land] || '#C41E3A'; // Default to Main Street color if land not found
+};
+
 const DisneyButton = styled(Button)({
   background: 'linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%)',
   color: 'white',
@@ -42,6 +58,16 @@ const DisneyButton = styled(Button)({
     opacity: 0.7,
   }
 });
+
+const StyledCard = styled(Card)(({ landColor }) => ({
+  height: '100%',
+  backgroundColor: `${landColor}10`,
+  borderLeft: `4px solid ${landColor}`,
+  transition: 'transform 0.2s ease-in-out',
+  '&:hover': {
+    transform: 'translateY(-2px)',
+  }
+}));
 
 const FooterContainer = styled(Paper)(({ theme }) => ({
   padding: '2rem',
@@ -205,24 +231,18 @@ const App = () => {
           ) : (
             <Box>
               {selectedRide && (
-                <Card
+                <StyledCard
+                  landColor={getLandColor(selectedRide.land)}
                   sx={{
                     mb: 4,
-                    background: 'linear-gradient(135deg, rgba(110, 70, 210, 0.15) 0%, rgba(44, 146, 210, 0.15) 100%)',
-                    border: '2px solid rgba(110, 70, 210, 0.3)',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 4px 15px rgba(44, 146, 210, 0.2)',
-                      border: '2px solid rgba(110, 70, 210, 0.4)'
-                    }
+                    boxShadow: '0 4px 15px rgba(44, 146, 210, 0.2)',
                   }}
                 >
                   <CardContent>
                     <Typography 
                       variant="h5" 
                       sx={{ 
-                        color: 'rgb(110, 70, 210)',
+                        color: getLandColor(selectedRide.land),
                         fontWeight: 600
                       }}
                     >
@@ -237,7 +257,7 @@ const App = () => {
                       <Typography 
                         variant="subtitle1" 
                         sx={{ 
-                          color: 'rgb(44, 146, 210)',
+                          color: getLandColor(selectedRide.land),
                           fontWeight: 500
                         }}
                       >
@@ -252,7 +272,7 @@ const App = () => {
                           fontWeight: 500,
                           color: selectedRide.waitTime === -1 ? 'error.main' : 
                                 selectedRide.waitTime === -2 ? 'warning.main' : 
-                                'rgb(110, 70, 210)'
+                                getLandColor(selectedRide.land)
                         }}
                       >
                         <AccessTimeIcon />
@@ -262,15 +282,15 @@ const App = () => {
                       </Typography>
                     </Box>
                   </CardContent>
-                </Card>
+                </StyledCard>
               )}
 
               <Grid container spacing={2}>
                 {filteredRides.map((ride) => (
                   <Grid item xs={12} sm={6} md={4} key={ride.name}>
-                    <Card>
+                    <StyledCard landColor={getLandColor(ride.land)}>
                       <CardContent>
-                        <Typography variant="h6">
+                        <Typography variant="h6" gutterBottom>
                           {ride.name}
                         </Typography>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
@@ -294,7 +314,7 @@ const App = () => {
                           </Typography>
                         </Box>
                       </CardContent>
-                    </Card>
+                    </StyledCard>
                   </Grid>
                 ))}
               </Grid>
