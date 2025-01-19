@@ -1,40 +1,13 @@
-/* Add this to your existing styles */
+/* ... (keep existing styles) ... */
 
-.disney-gradient-button {
-  background: linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%) !important;
-  color: white !important;
-  font-weight: 600 !important;
-  text-transform: none !important;
-  padding: 12px 32px !important;
-  border-radius: 6px !important;
+.selected-ride-card {
+  background: linear-gradient(135deg, rgba(110, 70, 210, 0.1) 0%, rgba(44, 146, 210, 0.1) 100%) !important;
+  border: 2px solid rgba(110, 70, 210, 0.2) !important;
   transition: all 0.3s ease !important;
-  box-shadow: 0 0 10px rgba(44, 146, 210, 0.3) !important;
-  border: none !important;
-  letter-spacing: 0.5px !important;
-  position: relative !important;
-  overflow: hidden !important;
 }
 
-.disney-gradient-button:hover {
+.selected-ride-card:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 4px 15px rgba(44, 146, 210, 0.4) !important;
-  background: linear-gradient(135deg, #7E56E2 0%, #3CA2E2 100%) !important;
-}
-
-.disney-gradient-button:before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  z-index: -1;
-  background: linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%);
-  border-radius: 7px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.disney-gradient-button:hover:before {
-  opacity: 0.4;
+  box-shadow: 0 4px 15px rgba(44, 146, 210, 0.2) !important;
+  border: 2px solid rgba(110, 70, 210, 0.3) !important;
 }

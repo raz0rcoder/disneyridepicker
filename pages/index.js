@@ -1,10 +1,10 @@
-import dynamic from 'next/dynamic';
+import App from '../src/App';
+import { NoSsr } from '@mui/material';
 
-// Dynamically import App with no SSR
-const App = dynamic(() => import('../src/App'), { ssr: false });
-
-const Home = () => {
-  return <App />;
-};
-
-export default Home;
+export default function Home() {
+  return (
+    <NoSsr>
+      <App />
+    </NoSsr>
+  );
+}

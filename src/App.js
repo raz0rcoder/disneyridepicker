@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
-import { styled } from '@mui/material/styles';
 import { 
-  Button,
+  Button, 
   Typography, 
   Card, 
   CardContent,
@@ -19,8 +18,8 @@ import {
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import { styled } from '@mui/material/styles';
 
-// Create a styled button component that overrides MUI's defaults
 const DisneyButton = styled(Button)({
   background: 'linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%)',
   color: 'white',
@@ -101,8 +100,7 @@ const App = () => {
   const filteredRides = waitTimes.filter(ride => {
     const matchesLand = !selectedLand || ride.land === selectedLand;
     const matchesType = !selectedType || ride.type === selectedType;
-    const isOperating = ride.waitTime !== -1; // Don't include closed rides
-    return matchesLand && matchesType && isOperating;
+    return matchesLand && matchesType;
   });
 
   const pickRandomRide = () => {
@@ -197,13 +195,42 @@ const App = () => {
           ) : (
             <Box>
               {selectedRide && (
-                <Card sx={{ mb: 4 }}>
+                <Card
+                  sx={{
+                    mb: 4,
+                    background: 'linear-gradient(135deg, rgba(110, 70, 210, 0.15) 0%, rgba(44, 146, 210, 0.15) 100%)',
+                    border: '2px solid rgba(110, 70, 210, 0.3)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 4px 15px rgba(44, 146, 210, 0.2)',
+                      border: '2px solid rgba(110, 70, 210, 0.4)'
+                    }
+                  }}
+                >
                   <CardContent>
-                    <Typography variant="h5">
+                    <Typography 
+                      variant="h5" 
+                      sx={{ 
+                        color: 'rgb(110, 70, 210)',
+                        fontWeight: 600
+                      }}
+                    >
                       {selectedRide.name}
                     </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
-                      <Typography variant="subtitle1">
+                    <Box sx={{ 
+                      display: 'flex', 
+                      justifyContent: 'space-between', 
+                      alignItems: 'center', 
+                      mt: 1 
+                    }}>
+                      <Typography 
+                        variant="subtitle1" 
+                        sx={{ 
+                          color: 'rgb(44, 146, 210)',
+                          fontWeight: 500
+                        }}
+                      >
                         {selectedRide.land}
                       </Typography>
                       <Typography 
@@ -212,8 +239,10 @@ const App = () => {
                           display: 'flex', 
                           alignItems: 'center',
                           gap: 0.5,
+                          fontWeight: 500,
                           color: selectedRide.waitTime === -1 ? 'error.main' : 
-                                selectedRide.waitTime === -2 ? 'warning.main' : 'inherit'
+                                selectedRide.waitTime === -2 ? 'warning.main' : 
+                                'rgb(110, 70, 210)'
                         }}
                       >
                         <AccessTimeIcon />
