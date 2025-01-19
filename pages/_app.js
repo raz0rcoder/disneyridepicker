@@ -1,6 +1,8 @@
 import React from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import '../styles/globals.css';
 
 const theme = createTheme({
   palette: {
@@ -10,13 +12,10 @@ const theme = createTheme({
     secondary: {
       main: '#6C7C8C',
     },
-    background: {
-      default: '#f7f7f7',
-    },
   },
 });
 
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
     // Remove the server-side injected CSS
     const jssStyles = document.querySelector('#jss-server-side');
@@ -32,3 +31,5 @@ export default function MyApp({ Component, pageProps }) {
     </ThemeProvider>
   );
 }
+
+export default MyApp;

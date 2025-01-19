@@ -1,10 +1,7 @@
+import React from 'react';
 import App from '../src/App';
-import { NoSsr } from '@mui/material';
 
+// Simple page component that renders App
 export default function Home() {
-  return (
-    <NoSsr>
-      <App />
-    </NoSsr>
-  );
+  return <App />;
 }

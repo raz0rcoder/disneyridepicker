@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
+import { styled } from '@mui/material/styles';
 import { 
   Button, 
   Typography, 
@@ -13,12 +14,12 @@ import {
   Grid,
   CircularProgress,
   Container,
-  Box
+  Box,
+  Paper
 } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
-import { styled } from '@mui/material/styles';
 
 const DisneyButton = styled(Button)({
   background: 'linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%)',
@@ -41,6 +42,15 @@ const DisneyButton = styled(Button)({
     opacity: 0.7,
   }
 });
+
+const FooterContainer = styled(Paper)(({ theme }) => ({
+  padding: '2rem',
+  marginTop: '2rem',
+  textAlign: 'center',
+  background: 'white',
+  borderRadius: 0,
+  borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+}));
 
 const App = () => {
   const [rides, setRides] = useState([]);
@@ -298,6 +308,20 @@ const App = () => {
           )}
         </Box>
       </Container>
+
+      <FooterContainer elevation={0}>
+        <Container maxWidth="lg">
+          <Typography variant="body2" color="text.secondary" paragraph>
+            This is an independent app and has no affiliation with The Walt Disney Company, Disney Parks, or any of their subsidiaries.
+          </Typography>
+          <Typography variant="body2" color="text.secondary" paragraph>
+            All Disney properties, logos, and ride names mentioned are trademarks or registered trademarks of The Walt Disney Company.
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Wait times are approximate and sourced from publicly available data. For official wait times, please use the Disneyland mobile app.
+          </Typography>
+        </Container>
+      </FooterContainer>
     </>
   );
 };
