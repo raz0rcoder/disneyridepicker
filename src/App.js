@@ -179,14 +179,14 @@ function App() {
               disabled={isLoading || filteredRides.length === 0}
               startIcon={<ShuffleIcon />}
               sx={{
-                background: 'linear-gradient(45deg, #6B46C1 30%, #4299E1 90%)',
+                background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
                 border: 0,
                 borderRadius: 3,
-                boxShadow: '0 3px 5px 2px rgba(107, 70, 193, .3)',
+                boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
                 color: 'white',
                 padding: '8px 30px',
                 '&:hover': {
-                  background: 'linear-gradient(45deg, #805AD5 30%, #63B3ED 90%)',
+                  background: 'linear-gradient(45deg, #FE8B8B 30%, #FF9E53 90%)',
                 }
               }}
             >
