@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
-import { styled } from '@mui/material/styles';
 import { 
   Button, 
   Typography, 
@@ -15,88 +14,30 @@ import {
   CircularProgress,
   Container,
   Box,
-  Paper,
-  Checkbox,
-  ListItemText,
-  OutlinedInput
+  Divider
 } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
-const getLandColor = (land) => {
-  // Color scheme for each land
-  const landColors = {
-    'Main Street U.S.A.': '#C41E3A',    // Victorian red
-    'Adventureland': '#2F4F2F',         // Deep jungle green
-    'Frontierland': '#8B4513',          // Saddle brown
-    'Fantasyland': '#6A0DAD',           // Royal purple
-    'Tomorrowland': '#4169E1',          // Royal blue
-    'Critter Country': '#8B7355',       // Warm brown
-    'Star Wars: Galaxy\'s Edge': '#2F4F4F', // Dark slate gray
-    'New Orleans Square': '#800080',     // Deep purple
-  };
+// Your existing fallbackRides array
+const fallbackRides = [
+  // Adventureland
+  { name: "Indiana Jones Adventure", land: "Adventureland", type: "Thrill Rides" },
+  { name: "Jungle Cruise", land: "Adventureland", type: "Family Rides" },
+  { name: "Tarzan's Treehouse", land: "Adventureland", type: "Shows & Entertainment" },
+  { name: "Walt Disney's Enchanted Tiki Room", land: "Adventureland", type: "Shows & Entertainment" },
+  // Critter Country
+  { name: "Tiana's Bayou Adventure", land: "Critter Country", type: "Dark Rides" },
+  { name: "The Many Adventures of Winnie the Pooh", land: "Critter Country", type: "Dark Rides" }
+  // Add the rest of your rides here...
+];
 
-  return landColors[land] || '#C41E3A'; // Default to Main Street color if land not found
-};
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const DisneyButton = styled(Button)({
-  background: 'linear-gradient(135deg, #6E46D2 0%, #2C92D2 100%)',
-  color: 'white',
-  fontWeight: 600,
-  textTransform: 'none',
-  padding: '12px 32px',
-  borderRadius: '6px',
-  transition: 'all 0.3s ease',
-  boxShadow: '0 0 10px rgba(44, 146, 210, 0.3)',
-  border: 'none',
-  letterSpacing: '0.5px',
-  '&:hover': {
-    transform: 'translateY(-2px)',
-    boxShadow: '0 4px 15px rgba(44, 146, 210, 0.4)',
-    background: 'linear-gradient(135deg, #7E56E2 0%, #3CA2E2 100%)',
-  },
-  '&:disabled': {
-    background: 'linear-gradient(135deg, #9E86E2 0%, #7CC2E2 100%)',
-    opacity: 0.7,
-  }
-});
-
-const StyledCard = styled(Card)(({ landColor }) => ({
-  height: '100%',
-  backgroundColor: `${landColor}10`,
-  borderLeft: `4px solid ${landColor}`,
-  transition: 'transform 0.2s ease-in-out',
-  '&:hover': {
-    transform: 'translateY(-2px)',
-  }
-}));
-
-const FooterContainer = styled(Paper)(() => ({
-  padding: '2rem',
-  marginTop: '2rem',
-  textAlign: 'center',
-  background: 'white',
-  borderRadius: 0,
-  borderTop: '1px solid rgba(0, 0, 0, 0.1)',
-}));
-
-const App = () => {
+function App() {
   const [rides, setRides] = useState([]);
   const [selectedRide, setSelectedRide] = useState(null);
-  const [selectedLands, setSelectedLands] = useState([]); // Changed to array
-  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [selectedLand, setSelectedLand] = useState('');
+  const [selectedType, setSelectedType] = useState('');
   const [waitTimes, setWaitTimes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
@@ -119,14 +60,25 @@ const App = () => {
         setRides(response.data);
         setWaitTimes(response.data);
         
+        // Update unique lands and types
         const lands = [...new Set(response.data.map(ride => ride.land))];
         const types = [...new Set(response.data.map(ride => ride.type))];
+        console.log('Unique lands:', lands);
+        console.log('Unique types:', types);
         setUniqueLands(lands);
         setUniqueTypes(types);
         
         setIsLoading(false);
       } catch (error) {
         console.error('Error initializing rides:', error);
+        // Use fallback data if fetch fails
+        console.log('Using fallback ride data');
+        setRides(fallbackRides);
+        setWaitTimes(fallbackRides);
+        const lands = [...new Set(fallbackRides.map(ride => ride.land))];
+        const types = [...new Set(fallbackRides.map(ride => ride.type))];
+        setUniqueLands(lands);
+        setUniqueTypes(types);
         setIsLoading(false);
       }
     };
@@ -135,21 +87,22 @@ const App = () => {
   }, []);
 
   const fetchWaitTimes = async () => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const response = await axios.get('/api/wait-times');
       setWaitTimes(response.data);
       setLastUpdated(new Date().toLocaleTimeString());
-      setIsLoading(false);
     } catch (error) {
       console.error('Error fetching wait times:', error);
+      setWaitTimes(fallbackRides);
+    } finally {
       setIsLoading(false);
     }
   };
 
   const filteredRides = waitTimes.filter(ride => {
-    const matchesLand = selectedLands.length === 0 || selectedLands.includes(ride.land);
-    const matchesType = selectedTypes.length === 0 || selectedTypes.includes(ride.type);
+    const matchesLand = !selectedLand || ride.land === selectedLand;
+    const matchesType = !selectedType || ride.type === selectedType;
     return matchesLand && matchesType;
   });
 
@@ -162,18 +115,12 @@ const App = () => {
     setSelectedRide(filteredRides[randomIndex]);
   };
 
-  const handleLandChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setSelectedLands(typeof value === 'string' ? value.split(',') : value);
+  const handleLandChange = (e) => {
+    setSelectedLand(e.target.value);
   };
 
-  const handleTypeChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setSelectedTypes(typeof value === 'string' ? value.split(',') : value);
+  const handleTypeChange = (e) => {
+    setSelectedType(e.target.value);
   };
 
   const handleRefresh = () => {
@@ -199,18 +146,13 @@ const App = () => {
             <FormControl sx={{ minWidth: 200 }}>
               <InputLabel>Filter by Land</InputLabel>
               <Select
-                multiple
-                value={selectedLands}
+                value={selectedLand}
                 onChange={handleLandChange}
-                input={<OutlinedInput label="Filter by Land" />}
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
+                label="Filter by Land"
               >
+                <MenuItem value="">All Lands</MenuItem>
                 {uniqueLands.map((land) => (
-                  <MenuItem key={land} value={land}>
-                    <Checkbox checked={selectedLands.indexOf(land) > -1} />
-                    <ListItemText primary={land} />
-                  </MenuItem>
+                  <MenuItem key={land} value={land}>{land}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -218,31 +160,27 @@ const App = () => {
             <FormControl sx={{ minWidth: 200 }}>
               <InputLabel>Filter by Type</InputLabel>
               <Select
-                multiple
-                value={selectedTypes}
+                value={selectedType}
                 onChange={handleTypeChange}
-                input={<OutlinedInput label="Filter by Type" />}
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
+                label="Filter by Type"
               >
+                <MenuItem value="">All Types</MenuItem>
                 {uniqueTypes.map((type) => (
-                  <MenuItem key={type} value={type}>
-                    <Checkbox checked={selectedTypes.indexOf(type) > -1} />
-                    <ListItemText primary={type} />
-                  </MenuItem>
+                  <MenuItem key={type} value={type}>{type}</MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Box>
 
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 4 }}>
-            <DisneyButton
+            <Button
+              variant="contained"
               onClick={pickRandomRide}
               disabled={isLoading || filteredRides.length === 0}
               startIcon={<ShuffleIcon />}
             >
               Pick a Random Ride
-            </DisneyButton>
+            </Button>
 
             <Button
               variant="contained"
@@ -261,69 +199,44 @@ const App = () => {
           ) : (
             <Box>
               {selectedRide && (
-                <StyledCard
-                  landColor={getLandColor(selectedRide.land)}
-                  sx={{
-                    mb: 4,
-                    boxShadow: '0 4px 15px rgba(44, 146, 210, 0.2)',
-                  }}
-                >
-                  <CardContent>
-                    <Typography 
-                      variant="h5" 
-                      sx={{ 
-                        color: getLandColor(selectedRide.land),
-                        fontWeight: 600
-                      }}
-                    >
-                      {selectedRide.name}
-                    </Typography>
-                    <Box sx={{ 
-                      display: 'flex', 
-                      justifyContent: 'space-between', 
-                      alignItems: 'center', 
-                      mt: 1 
-                    }}>
-                      <Typography 
-                        variant="subtitle1" 
-                        sx={{ 
-                          color: getLandColor(selectedRide.land),
-                          fontWeight: 500
-                        }}
-                      >
-                        {selectedRide.land}
+                <>
+                  <Card sx={{ mb: 4 }}>
+                    <CardContent>
+                      <Typography variant="h5">
+                        {selectedRide.name}
                       </Typography>
-                      <Typography 
-                        variant="subtitle1"
-                        sx={{ 
-                          display: 'flex', 
-                          alignItems: 'center',
-                          gap: 0.5,
-                          fontWeight: 500,
-                          color: selectedRide.waitTime === -1 ? 'error.main' : 
-                                selectedRide.waitTime === -2 ? 'warning.main' : 
-                                getLandColor(selectedRide.land)
-                        }}
-                      >
-                        <AccessTimeIcon />
-                        {selectedRide.waitTime === -1 ? 'Closed' :
-                         selectedRide.waitTime === -2 ? 'Down' :
-                         `${selectedRide.waitTime} min wait`}
-                      </Typography>
-                    </Box>
-                    <Typography variant="body2" sx={{ mt: 1, color: 'text.secondary' }}>
-                      Type: {selectedRide.type}
-                    </Typography>
-                  </CardContent>
-                </StyledCard>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
+                        <Typography variant="subtitle1">
+                          {selectedRide.land}
+                        </Typography>
+                        <Typography 
+                          variant="subtitle1"
+                          sx={{ 
+                            display: 'flex', 
+                            alignItems: 'center',
+                            gap: 0.5,
+                            color: selectedRide.waitTime === -1 ? 'error.main' : 
+                                  selectedRide.waitTime === -2 ? 'warning.main' : 'inherit'
+                          }}
+                        >
+                          <AccessTimeIcon />
+                          {selectedRide.waitTime === -1 ? 'Closed' :
+                           selectedRide.waitTime === -2 ? 'Down' :
+                           `${selectedRide.waitTime} min wait`}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                  <Divider sx={{ mb: 4 }} />
+                </>
               )}
 
               <Grid container spacing={2}>
                 {filteredRides.map((ride) => (
                   <Grid item xs={12} sm={6} md={4} key={ride.name}>
-                    <StyledCard landColor={getLandColor(ride.land)}>
+                    <Card>
                       <CardContent>
-                        <Typography variant="h6" gutterBottom>
+                        <Typography variant="h6">
                           {ride.name}
                         </Typography>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
@@ -346,11 +259,8 @@ const App = () => {
                              `${ride.waitTime} min wait`}
                           </Typography>
                         </Box>
-                        <Typography variant="body2" sx={{ mt: 1, color: 'text.secondary' }}>
-                          Type: {ride.type}
-                        </Typography>
                       </CardContent>
-                    </StyledCard>
+                    </Card>
                   </Grid>
                 ))}
               </Grid>
@@ -364,22 +274,8 @@ const App = () => {
           )}
         </Box>
       </Container>
-
-      <FooterContainer elevation={0}>
-        <Container maxWidth="lg">
-          <Typography variant="body2" color="text.secondary" paragraph>
-            This is an independent app and has no affiliation with The Walt Disney Company, Disney Parks, or any of their subsidiaries.
-          </Typography>
-          <Typography variant="body2" color="text.secondary" paragraph>
-            All Disney properties, logos, and ride names mentioned are trademarks or registered trademarks of The Walt Disney Company.
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Wait times are approximate and sourced from publicly available data. For official wait times, please use the Disneyland mobile app.
-          </Typography>
-        </Container>
-      </FooterContainer>
     </>
   );
-};
+}
 
 export default App;
