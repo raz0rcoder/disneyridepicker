@@ -178,6 +178,17 @@ function App() {
               onClick={pickRandomRide}
               disabled={isLoading || filteredRides.length === 0}
               startIcon={<ShuffleIcon />}
+              sx={{
+                background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+                border: 0,
+                borderRadius: 3,
+                boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+                color: 'white',
+                padding: '8px 30px',
+                '&:hover': {
+                  background: 'linear-gradient(45deg, #FE8B8B 30%, #FF9E53 90%)',
+                }
+              }}
             >
               Pick a Random Ride
             </Button>
@@ -187,6 +198,17 @@ function App() {
               onClick={handleRefresh}
               disabled={refreshing}
               startIcon={<RefreshIcon />}
+              sx={{
+                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                border: 0,
+                borderRadius: 3,
+                boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+                color: 'white',
+                padding: '8px 30px',
+                '&:hover': {
+                  background: 'linear-gradient(45deg, #2196F3 40%, #21CBF3 100%)',
+                }
+              }}
             >
               {refreshing ? 'Refreshing...' : 'Refresh Wait Times'}
             </Button>
@@ -200,23 +222,40 @@ function App() {
             <Box>
               {selectedRide && (
                 <>
-                  <Card sx={{ mb: 4 }}>
+                  <Card 
+                    sx={{ 
+                      mb: 4,
+                      backgroundColor: 'primary.light',
+                      '& .MuiTypography-root': {
+                        color: 'primary.contrastText'
+                      }
+                    }}
+                    elevation={3}
+                  >
                     <CardContent>
-                      <Typography variant="h5">
+                      <Typography variant="h5" component="div">
+                        Selected Ride:
+                      </Typography>
+                      <Typography variant="h4" sx={{ mt: 1 }}>
                         {selectedRide.name}
                       </Typography>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
-                        <Typography variant="subtitle1">
+                      <Box sx={{ 
+                        display: 'flex', 
+                        justifyContent: 'space-between', 
+                        alignItems: 'center', 
+                        mt: 2
+                      }}>
+                        <Typography variant="h6">
                           {selectedRide.land}
                         </Typography>
                         <Typography 
-                          variant="subtitle1"
+                          variant="h6"
                           sx={{ 
                             display: 'flex', 
                             alignItems: 'center',
                             gap: 0.5,
-                            color: selectedRide.waitTime === -1 ? 'error.main' : 
-                                  selectedRide.waitTime === -2 ? 'warning.main' : 'inherit'
+                            color: selectedRide.waitTime === -1 ? 'error.light' : 
+                                  selectedRide.waitTime === -2 ? 'warning.light' : 'inherit'
                           }}
                         >
                           <AccessTimeIcon />
